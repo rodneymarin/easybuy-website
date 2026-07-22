@@ -1,0 +1,374 @@
+diff --git a/index.html b/index.html
+index 4c140fd..c528c33 100644
+--- a/index.html
++++ b/index.html
+@@ -11,6 +11,7 @@
+ 		content="Organiza tus compras y agrupa por tiendas. EasyBuy te permite crear listas de compras con precios por establecimiento." />
+ 	<meta property="og:image" content="/project-screenshots.png" />
+ 	<meta property="og:type" content="website" />
++	<meta property="og:locale" content="es_ES" />
+ 	<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+ 	<link rel="preconnect" href="https://fonts.googleapis.com" />
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+@@ -28,7 +29,7 @@
+ 			<a href="https://tyrpayj0fal1ajop.public.blob.vercel-storage.com/app-release.apk" target="_blank"
+ 				rel="noopener noreferrer"
+ 				class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+-				Descargar APK
++				<span data-i18n="header.download">Descargar APK</span>
+ 			</a>
+ 		</div>
+ 	</header>
+diff --git a/src/main.js b/src/main.js
+index 2e8620e..b7a0209 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -4,5 +4,8 @@ import featureHtml from './sections/feature.html?raw'
+ import featuresHtml from './sections/features.html?raw'
+ import ctaHtml from './sections/cta.html?raw'
+ import footerHtml from './sections/footer.html?raw'
++import { init as initI18n } from './i18n/index.js'
+ 
+ document.querySelector('#app').innerHTML = [heroHtml, featureHtml, featuresHtml, ctaHtml, footerHtml].join('')
++
++initI18n()
+diff --git a/src/sections/cta.html b/src/sections/cta.html
+index 28390ff..4dd85ab 100644
+--- a/src/sections/cta.html
++++ b/src/sections/cta.html
+@@ -1,11 +1,11 @@
+ <section id="eb-cta" class="bg-gray-50 px-4 py-14 sm:px-6 lg:px-12" aria-label="Llamado a la acci+¦n">
+   <div class="mx-auto max-w-5xl text-center">
+-    <h2 class="eb-cta__title text-3xl font-extrabold text-gray-900 sm:text-4xl">
++    <h2 class="eb-cta__title text-3xl font-extrabold text-gray-900 sm:text-4xl" data-i18n="cta.title">
+       EasyBuy est+í lista para usarse. -+Qu+¬ esperas?
+     </h2>
+     <div class="mt-8">
+       <a href="https://easybuy.rodneymarin.com/" target="_blank" rel="noopener noreferrer" class="eb-cta__btn inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-lg font-semibold text-white shadow-sm transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+-        Probar ahora
++        <span data-i18n="cta.button">Probar ahora</span>
+       </a>
+     </div>
+   </div>
+diff --git a/src/sections/feature.html b/src/sections/feature.html
+index 25fbaa0..e9046a0 100644
+--- a/src/sections/feature.html
++++ b/src/sections/feature.html
+@@ -1,9 +1,9 @@
+ <section id="eb-feature" class="bg-white px-4 py-12 sm:px-6 lg:px-12" aria-labelledby="eb-feature__title">
+   <div class="mx-auto max-w-5xl text-center">
+-    <h2 id="eb-feature__title" class="eb-feature__title text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
++    <h2 id="eb-feature__title" class="eb-feature__title text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl" data-i18n="feature.title">
+       Una App para tiendas, productos y listas
+     </h2>
+-    <p class="eb-feature__subtitle mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-900 sm:text-xl">
++    <p class="eb-feature__subtitle mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-900 sm:text-xl" data-i18n="feature.subtitle">
+       EasyBuy tiene todo en uno: tiendas donde compras, productos con precios por tiendas y listas filtradas por tiendas.
+     </p>
+   </div>
+diff --git a/src/sections/features.html b/src/sections/features.html
+index 1c8aa85..2269ee4 100644
+--- a/src/sections/features.html
++++ b/src/sections/features.html
+@@ -2,38 +2,38 @@
+   <div class="mx-auto flex max-w-3xl flex-col gap-12">
+     <div class="eb-features__block flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
+       <div class="eb-features__img flex-shrink-0">
+-        <img src="/illustration-listas.svg" alt="Listas que filtran por tiendas" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
++        <img src="/illustration-listas.svg" alt="Listas que filtran por tiendas" data-i18n-alt="features.listas.alt" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
+       </div>
+       <div class="eb-features__text max-w-lg text-center lg:text-left">
+-        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">Listas que filtran por tiendas</h3>
+-        <p class="mt-3 text-lg text-gray-900">Crea listas de compras unificadas que distingue qu+¬ productos comprar+ís en cada supermercado o tienda. Unos productos en el s+¦per, otros en la verduler+¡a, otros en la carnicer+¡a.</p>
++        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl" data-i18n="features.listas.title">Listas que filtran por tiendas</h3>
++        <p class="mt-3 text-lg text-gray-900" data-i18n="features.listas.desc">Crea listas de compras unificadas que distingue qu+¬ productos comprar+ís en cada supermercado o tienda. Unos productos en el s+¦per, otros en la verduler+¡a, otros en la carnicer+¡a.</p>
+       </div>
+     </div>
+     <div class="eb-features__block flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
+       <div class="eb-features__img flex-shrink-0">
+-        <img src="/illustration-productos.svg" alt="Maestro de productos" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
++        <img src="/illustration-productos.svg" alt="Maestro de productos" data-i18n-alt="features.productos.alt" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
+       </div>
+       <div class="eb-features__text max-w-lg text-center lg:text-left">
+-        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">Maestro productos</h3>
+-        <p class="mt-3 text-lg text-gray-900">Tu cat+ílogo personal. Agrega productos una vez y as+¡gnalos a cualquier lista despu+¬s.</p>
++        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl" data-i18n="features.productos.title">Maestro productos</h3>
++        <p class="mt-3 text-lg text-gray-900" data-i18n="features.productos.desc">Tu cat+ílogo personal. Agrega productos una vez y as+¡gnalos a cualquier lista despu+¬s.</p>
+       </div>
+     </div>
+     <div class="eb-features__block flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
+       <div class="eb-features__img flex-shrink-0">
+-        <img src="/illustration-tienda.svg" alt="Precios de productos por tiendas" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
++        <img src="/illustration-tienda.svg" alt="Precios de productos por tiendas" data-i18n-alt="features.precios.alt" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
+       </div>
+       <div class="eb-features__text max-w-lg text-center lg:text-left">
+-        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">Precios de productos por tiendas</h3>
+-        <p class="mt-3 text-lg text-gray-900">A cada producto le puedes asignar precios diferentes por establecimiento y al asignarle una tienda en la lista, tomar+í el precio correspondiente.</p>
++        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl" data-i18n="features.precios.title">Precios de productos por tiendas</h3>
++        <p class="mt-3 text-lg text-gray-900" data-i18n="features.precios.desc">A cada producto le puedes asignar precios diferentes por establecimiento y al asignarle una tienda en la lista, tomar+í el precio correspondiente.</p>
+       </div>
+     </div>
+     <div class="eb-features__block flex flex-col items-center gap-8 lg:flex-row lg:gap-16">
+       <div class="eb-features__img flex-shrink-0">
+-        <img src="/illustration-nube.svg" alt="Modo local y nube" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
++        <img src="/illustration-nube.svg" alt="Modo local y nube" data-i18n-alt="features.nube.alt" class="h-48 w-48 sm:h-56 sm:w-56" width="240" height="240" />
+       </div>
+       <div class="eb-features__text max-w-lg text-center lg:text-left">
+-        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">Modo local / nube</h3>
+-        <p class="mt-3 text-lg text-gray-900">Funciona sin conexi+¦n con su base de datos local. Y si prefieres, puedes tener una cuenta separada permanente en la nube.</p>
++        <h3 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl" data-i18n="features.nube.title">Modo local / nube</h3>
++        <p class="mt-3 text-lg text-gray-900" data-i18n="features.nube.desc">Funciona sin conexi+¦n con su base de datos local. Y si prefieres, puedes tener una cuenta separada permanente en la nube.</p>
+       </div>
+     </div>
+   </div>
+diff --git a/src/sections/footer.html b/src/sections/footer.html
+index c531ed1..c8b0a30 100644
+--- a/src/sections/footer.html
++++ b/src/sections/footer.html
+@@ -2,22 +2,27 @@
+ 	<div class="mx-auto max-w-5xl">
+ 		<div class="flex flex-col items-center gap-8 md:flex-row md:justify-between">
+ 			<div class="eb-footer__qr flex flex-col items-center gap-3 md:items-start">
+-				<img src="/qr.png" alt="C+¦digo QR de descarga EasyBuy" class="h-28 w-28" width="200" height="200" />
++				<img src="/qr.png" alt="C+¦digo QR de descarga EasyBuy" data-i18n-alt="footer.qr.alt" class="h-28 w-28" width="200" height="200" />
+ 				<a href="#" class="text-sm text-gray-300 underline transition-colors hover:text-white">
+-					Descargar EasyBuy
++					<span data-i18n="footer.download">Descargar EasyBuy</span>
+ 				</a>
+ 			</div>
+ 			<div class="eb-footer__links flex flex-col items-center gap-3 text-center md:items-end md:text-right">
++				<div class="eb-footer__lang flex items-center gap-2 text-sm">
++					<button data-lang="es" class="eb-lang-btn font-semibold text-white transition-colors hover:text-primary" aria-label="Espa+¦ol">ES</button>
++					<span class="text-gray-600">|</span>
++					<button data-lang="en" class="eb-lang-btn text-gray-400 transition-colors hover:text-white" aria-label="English">EN</button>
++				</div>
+ 				<a href="#" class="text-sm text-gray-300 transition-colors hover:text-white">
+-					Aviso de privacidad
++					<span data-i18n="footer.privacy">Aviso de privacidad</span>
+ 				</a>
+ 				<a href="#" class="text-sm text-gray-300 transition-colors hover:text-white">
+-					T+¬rminos de uso
++					<span data-i18n="footer.terms">T+¬rminos de uso</span>
+ 				</a>
+ 			</div>
+ 		</div>
+ 		<div class="mt-8 border-t border-gray-800 pt-6 text-center">
+-			<p class="text-sm text-gray-400">&copy; 2026 EasyBuy. Todos los derechos reservados.</p>
++			<p class="text-sm text-gray-400"><span data-i18n="footer.copyright">&copy; 2026 EasyBuy. Todos los derechos reservados.</span></p>
+ 		</div>
+ 	</div>
+ </footer>
+\ No newline at end of file
+diff --git a/src/sections/hero.html b/src/sections/hero.html
+index a2fc5a5..3fa7aac 100644
+--- a/src/sections/hero.html
++++ b/src/sections/hero.html
+@@ -1,23 +1,23 @@
+ <section id="eb-hero" class="flex items-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-12" aria-label="Hero EasyBuy">
+   <div class="mx-auto flex w-full max-w-5xl flex-col items-center gap-8 lg:flex-row lg:justify-between">
+     <div class="flex max-w-xl flex-col items-center text-center lg:items-start lg:text-left">
+-      <h1 class="eb-hero__title text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
++      <h1 class="eb-hero__title text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl" data-i18n="hero.title">
+         Organiza tus compras y agrupa por tiendas
+       </h1>
+-      <p class="eb-hero__subtitle mt-4 text-lg text-gray-900 sm:text-xl">
++      <p class="eb-hero__subtitle mt-4 text-lg text-gray-900 sm:text-xl" data-i18n="hero.subtitle">
+         EasyBuy te permite crear listas de compras con precios por establecimiento.
+       </p>
+       <div class="eb-hero__ctas mt-8 flex flex-col gap-4 sm:flex-row">
+         <a href="https://easybuy.rodneymarin.com/" target="_blank" rel="noopener noreferrer" class="eb-hero__cta eb-hero__cta--primary inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+-          Usar versi+¦n web
++          <span data-i18n="hero.cta.web">Usar versi+¦n web</span>
+         </a>
+         <a href="https://tyrpayj0fal1ajop.public.blob.vercel-storage.com/app-release.apk" target="_blank" rel="noopener noreferrer" class="eb-hero__cta eb-hero__cta--secondary inline-flex items-center justify-center rounded-full border-2 border-primary px-6 py-3 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+-          Descargar APK
++          <span data-i18n="hero.cta.apk">Descargar APK</span>
+         </a>
+       </div>
+     </div>
+     <div class="eb-hero__mockup flex-shrink-0">
+-      <img src="/project-screenshots.png" alt="Captura de pantalla de EasyBuy" class="h-auto max-h-[32rem] w-full max-w-md object-contain" width="600" height="400" />
++      <img src="/project-screenshots.png" alt="Captura de pantalla de EasyBuy" data-i18n-alt="hero.mockup.alt" class="h-auto max-h-[32rem] w-full max-w-md object-contain" width="600" height="400" />
+     </div>
+   </div>
+ </section>
+diff --git a/src/i18n/es.json b/src/i18n/es.json
+new file mode 100644
+index 0000000..88042a5
+--- /dev/null
++++ b/src/i18n/es.json
+@@ -0,0 +1,29 @@
++{
++  "header.download": "Descargar APK",
++  "hero.title": "Organiza tus compras y agrupa por tiendas",
++  "hero.subtitle": "EasyBuy te permite crear listas de compras con precios por establecimiento.",
++  "hero.cta.web": "Usar versi+¦n web",
++  "hero.cta.apk": "Descargar APK",
++  "hero.mockup.alt": "Captura de pantalla de EasyBuy",
++  "feature.title": "Una App para tiendas, productos y listas",
++  "feature.subtitle": "EasyBuy tiene todo en uno: tiendas donde compras, productos con precios por tiendas y listas filtradas por tiendas.",
++  "features.listas.title": "Listas que filtran por tiendas",
++  "features.listas.desc": "Crea listas de compras unificadas que distingue qu+¬ productos comprar+ís en cada supermercado o tienda. Unos productos en el s+¦per, otros en la verduler+¡a, otros en la carnicer+¡a.",
++  "features.listas.alt": "Listas que filtran por tiendas",
++  "features.productos.title": "Maestro productos",
++  "features.productos.desc": "Tu cat+ílogo personal. Agrega productos una vez y as+¡gnalos a cualquier lista despu+¬s.",
++  "features.productos.alt": "Maestro de productos",
++  "features.precios.title": "Precios de productos por tiendas",
++  "features.precios.desc": "A cada producto le puedes asignar precios diferentes por establecimiento y al asignarle una tienda en la lista, tomar+í el precio correspondiente.",
++  "features.precios.alt": "Precios de productos por tiendas",
++  "features.nube.title": "Modo local / nube",
++  "features.nube.desc": "Funciona sin conexi+¦n con su base de datos local. Y si prefieres, puedes tener una cuenta separada permanente en la nube.",
++  "features.nube.alt": "Modo local y nube",
++  "cta.title": "EasyBuy est+í lista para usarse. -+Qu+¬ esperas?",
++  "cta.button": "Probar ahora",
++  "footer.qr.alt": "C+¦digo QR de descarga EasyBuy",
++  "footer.download": "Descargar EasyBuy",
++  "footer.privacy": "Aviso de privacidad",
++  "footer.terms": "T+¬rminos de uso",
++  "footer.copyright": "-¬ 2026 EasyBuy. Todos los derechos reservados."
++}
+diff --git a/src/i18n/en.json b/src/i18n/en.json
+new file mode 100644
+index 0000000..4a6b07a
+--- /dev/null
++++ b/src/i18n/en.json
+@@ -0,0 +1,29 @@
++{
++  "header.download": "Download APK",
++  "hero.title": "Organize your shopping and group by store",
++  "hero.subtitle": "EasyBuy lets you create shopping lists with prices per store.",
++  "hero.cta.web": "Use web version",
++  "hero.cta.apk": "Download APK",
++  "hero.mockup.alt": "EasyBuy screenshot",
++  "feature.title": "One App for stores, products, and lists",
++  "feature.subtitle": "EasyBuy has it all in one: stores where you shop, products with prices per store, and lists filtered by store.",
++  "features.listas.title": "Lists that filter by store",
++  "features.listas.desc": "Create unified shopping lists that distinguish which products to buy at each supermarket or store. Some products at the supermarket, others at the greengrocer, others at the butcher.",
++  "features.listas.alt": "Lists that filter by store",
++  "features.productos.title": "Product master",
++  "features.productos.desc": "Your personal catalog. Add products once and assign them to any list later.",
++  "features.productos.alt": "Product master",
++  "features.precios.title": "Product prices by store",
++  "features.precios.desc": "Assign different prices per store to each product, and when you assign a store to the list, it will take the corresponding price.",
++  "features.precios.alt": "Product prices by store",
++  "features.nube.title": "Local / cloud mode",
++  "features.nube.desc": "Works offline with its local database. And if you prefer, you can have a separate permanent account in the cloud.",
++  "features.nube.alt": "Local and cloud mode",
++  "cta.title": "EasyBuy is ready to use. What are you waiting for?",
++  "cta.button": "Try now",
++  "footer.qr.alt": "EasyBuy download QR code",
++  "footer.download": "Download EasyBuy",
++  "footer.privacy": "Privacy notice",
++  "footer.terms": "Terms of use",
++  "footer.copyright": "-¬ 2026 EasyBuy. All rights reserved."
++}
+diff --git a/src/i18n/index.js b/src/i18n/index.js
+new file mode 100644
+index 0000000..a19b75a
+--- /dev/null
++++ b/src/i18n/index.js
+@@ -0,0 +1,103 @@
++import es from './es.json'
++import en from './en.json'
++
++const STORAGE_KEY = 'eb-lang'
++const translations = { es, en }
++const FALLBACK = 'en'
++
++let currentLang = detectLang()
++
++export function getCurrentLang() {
++  return currentLang
++}
++
++function detectLang() {
++  const stored = localStorage.getItem(STORAGE_KEY)
++  if (stored && translations[stored]) return stored
++
++  const browser = (navigator.language || '').split('-')[0]
++  if (translations[browser]) return browser
++
++  return FALLBACK
++}
++
++export function setLang(lang) {
++  if (!translations[lang]) return
++  currentLang = lang
++  localStorage.setItem(STORAGE_KEY, lang)
++  applyTranslations()
++  updateMeta()
++  updateLangBtns()
++}
++
++export function applyTranslations() {
++  document.querySelectorAll('[data-i18n]').forEach(el => {
++    const key = el.getAttribute('data-i18n')
++    const text = translations[currentLang]?.[key]
++    if (text) el.textContent = text
++  })
++  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
++    const key = el.getAttribute('data-i18n-alt')
++    const text = translations[currentLang]?.[key]
++    if (text) el.setAttribute('alt', text)
++  })
++  document.documentElement.lang = currentLang === 'es' ? 'es' : 'en'
++}
++
++function updateMeta() {
++  const locale = currentLang === 'es' ? 'es_ES' : 'en_US'
++  const ogLocale = document.querySelector('meta[property="og:locale"]')
++  if (ogLocale) ogLocale.setAttribute('content', locale)
++
++  const ogTitle = document.querySelector('meta[property="og:title"]')
++  if (ogTitle) {
++    ogTitle.setAttribute('content',
++      currentLang === 'es' ? 'EasyBuy GÇö Tu lista de compras inteligente' : 'EasyBuy GÇö Your smart shopping list'
++    )
++  }
++
++  const ogDesc = document.querySelector('meta[property="og:description"]')
++  if (ogDesc) {
++    ogDesc.setAttribute('content',
++      currentLang === 'es'
++        ? 'Organiza tus compras y agrupa por tiendas. EasyBuy te permite crear listas de compras con precios por establecimiento.'
++        : 'Organize your shopping and group by store. EasyBuy lets you create shopping lists with prices per store.'
++    )
++  }
++
++  const description = document.querySelector('meta[name="description"]')
++  if (description) {
++    description.setAttribute('content',
++      currentLang === 'es'
++        ? 'EasyBuy te permite crear listas de compras agrupando por tiendas con precios por establecimiento. Descarga la app o usa la versi+¦n web.'
++        : 'EasyBuy lets you create shopping lists grouped by store with prices per store. Download the app or use the web version.'
++    )
++  }
++
++  const title = document.querySelector('title')
++  if (title) {
++    title.textContent = currentLang === 'es' ? 'EasyBuy GÇö Tu lista de compras inteligente' : 'EasyBuy GÇö Your smart shopping list'
++  }
++}
++
++function updateLangBtns() {
++  document.querySelectorAll('.eb-lang-btn').forEach(btn => {
++    const isActive = btn.getAttribute('data-lang') === currentLang
++    btn.classList.toggle('text-white', isActive)
++    btn.classList.toggle('font-semibold', isActive)
++    btn.classList.toggle('text-gray-400', !isActive)
++    btn.classList.toggle('font-normal', !isActive)
++  })
++}
++
++export function init() {
++  applyTranslations()
++  updateMeta()
++  updateLangBtns()
++
++  document.querySelectorAll('[data-lang]').forEach(btn => {
++    btn.addEventListener('click', () => {
++      setLang(btn.getAttribute('data-lang'))
++    })
++  })
++}
+
