@@ -4,3 +4,7 @@
   --color-primary: #4a5df9;
   --font-sans: "Inter", sans-serif;
 }
+
+html:not(.i18n-ready) [data-i18n] {
+  visibility: hidden;
+}

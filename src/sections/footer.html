@@ -2,22 +2,27 @@
 	<div class="mx-auto max-w-5xl">
 		<div class="flex flex-col items-center gap-8 md:flex-row md:justify-between">
 			<div class="eb-footer__qr flex flex-col items-center gap-3 md:items-start">
-				<img src="/qr.png" alt="Código QR de descarga EasyBuy" class="h-28 w-28" width="200" height="200" />
+				<img src="/qr.png" alt="Código QR de descarga EasyBuy" data-i18n-alt="footer.qr.alt" class="h-28 w-28" width="200" height="200" />
 				<a href="#" class="text-sm text-gray-300 underline transition-colors hover:text-white">
-					Descargar EasyBuy
+					<span data-i18n="footer.download">Descargar EasyBuy</span>
 				</a>
 			</div>
 			<div class="eb-footer__links flex flex-col items-center gap-3 text-center md:items-end md:text-right">
+				<div class="eb-footer__lang flex items-center gap-2 text-sm">
+					<button data-lang="es" class="eb-lang-btn font-semibold text-white transition-colors hover:text-primary" aria-label="Español">ES</button>
+					<span class="text-gray-600">|</span>
+					<button data-lang="en" class="eb-lang-btn text-gray-400 transition-colors hover:text-white" aria-label="English">EN</button>
+				</div>
 				<a href="#" class="text-sm text-gray-300 transition-colors hover:text-white">
-					Aviso de privacidad
+					<span data-i18n="footer.privacy">Aviso de privacidad</span>
 				</a>
 				<a href="#" class="text-sm text-gray-300 transition-colors hover:text-white">
-					Términos de uso
+					<span data-i18n="footer.terms">Términos de uso</span>
 				</a>
 			</div>
 		</div>
 		<div class="mt-8 border-t border-gray-800 pt-6 text-center">
-			<p class="text-sm text-gray-400">&copy; 2026 EasyBuy. Todos los derechos reservados.</p>
+			<p class="text-sm text-gray-400"><span data-i18n="footer.copyright">&copy; 2026 EasyBuy. Todos los derechos reservados.</span></p>
 		</div>
 	</div>
 </footer>
