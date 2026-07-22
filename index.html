@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description"
+		content="EasyBuy te permite crear listas de compras agrupando por tiendas con precios por establecimiento. Descarga la app o usa la versión web." />
+	<meta property="og:title" content="EasyBuy — Tu lista de compras inteligente" />
+	<meta property="og:description"
+		content="Organiza tus compras y agrupa por tiendas. EasyBuy te permite crear listas de compras con precios por establecimiento." />
+	<meta property="og:image" content="/project-screenshots.png" />
+	<meta property="og:type" content="website" />
+	<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<title>EasyBuy — Tu lista de compras inteligente</title>
+	<link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+	<header id="eb-header" class="bg-gray-50" aria-label="Header EasyBuy">
+		<div class="mx-auto flex max-w-5xl items-center justify-between py-3 ">
+			<a href="/" class="flex items-center gap-2" aria-label="EasyBuy inicio">
+				<img src="/logo.svg" alt="EasyBuy" class="h-8 w-auto" />
+			</a>
+			<a href="https://tyrpayj0fal1ajop.public.blob.vercel-storage.com/app-release.apk" target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+				Descargar APK
+			</a>
+		</div>
+	</header>
+	<div id="app"></div>
+	<script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+# generated: 2026-07-21
+# last_updated: 2026-07-21
+# project: EasyBuy
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+
+generated: 2026-07-21
+last_updated: 2026-07-21
+project: EasyBuy
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  epic-1: done
+  1-1-setup-del-proyecto: done
+  1-2-hero-section: done
+  1-3-feature-destacada: done
+  1-4-features-zig-zag: done
+  1-5-cta-intermedio-footer: done
+  1-6-seo-polish-final: done
+  epic-1-retrospective: done

@@ -1,0 +1,56 @@
+DIFF — spec-update-1-visual-redesign
+Baseline: NO_VCS (all files before edits)
+
+=== CHANGED FILES ===
+
+1. index.html
+   - Added <header id="eb-header"> before #app with:
+     * Logo (logo.svg) on left, linked to /
+     * CTA button "Descargar APK" on right (rounded-full, bg-primary)
+     * Header bg-gray-50 full-width, inner container max-w-5xl
+
+2. src/sections/hero.html
+   - bg-white → bg-gray-50
+   - max-w-7xl → max-w-5xl
+   - h1: font-bold → font-extrabold
+   - p, .eb-hero__subtitle: text-gray-600 → text-gray-900
+   - Both CTAs: rounded-lg → rounded-full
+   - CTA web href: https://easybuy.app/web → https://easybuy.rodneymarin.com/
+   - CTA APK href: https://easybuy.app/apk → https://tyrpayj0fal1ajop.public.blob.vercel-storage.com/app-release.apk
+
+3. src/sections/feature.html
+   - py-24 → py-10
+   - max-w-4xl → max-w-5xl
+   - h2: font-bold → font-extrabold
+   - p: text-gray-600 → text-gray-900
+
+4. src/sections/features.html
+   - py-24 → py-10
+   - max-w-6xl → max-w-5xl
+   - gap-20 → gap-12
+   - All h3: text-2xl → text-3xl, font-bold → font-extrabold
+   - All p: text-gray-600 → text-gray-900
+
+5. src/sections/cta.html
+   - py-20 → py-12
+   - max-w-3xl → max-w-5xl
+   - h2: font-bold → font-extrabold
+   - CTA btn: rounded-lg → rounded-full
+   - href: https://easybuy.app/web → https://easybuy.rodneymarin.com/
+
+6. src/sections/footer.html
+   - bg-[#1a1a2e] → bg-black
+   - py-16 → py-10
+   - max-w-6xl → max-w-5xl
+   - QR link href: https://easybuy.app → #
+   - All footer links: text-gray-400 → text-gray-300
+   - Privacy & Terms links href: https://easybuy.app/legal/* → #
+   - Footer divider: border-gray-700 → border-gray-800
+   - Copyright: text-gray-500 → text-gray-400, mt-12 pt-8 → mt-8 pt-6
+
+=== UNCHANGED FILES ===
+- src/style.css (verified: Tailwind v4 already includes font-extrabold/font-black)
+- src/main.js
+- vite.config.js
+- All assets/*.svg and assets/*.png
+- All textual content preserved as-is
